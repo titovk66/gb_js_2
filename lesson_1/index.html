@@ -12,22 +12,53 @@
 </head>
 
 <body>
+<div id="root">
     <header class="header">
         <div class="container">
             <nav class="header__nav">
                 <div class="nav__logo">
                     <h1 class="nav__title">eShop</h1>
                 </div>
-                <button class="cart-button" type="button">Корзина</button>
+                <div class="nav__search">
+                    <div>
+                        <input type="text" class="goods-search" v-model="search"/>
+                        <button class="search-button" type="button" v-on:click="filterItems">Искать</button>
+                    </div>
+                    <div>
+                        <button class="cart-button" type="button" @click="setVisibleCard">Корзина</button>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
     <main>
         <div class="container">
-            <div class="goods-list"></div>
+            <div class="goods-list">
+                <div class="goods-item" v-for="item in filteredItems">
+                    <h3>{{ item.product_name }}</h3>
+                    <p>{{ item.price }}</p>
+                </div>
+            </div>
         </div>
+        <div class="filtered__items" v-if="!filteredItems.length">Нет данных</div>
     </main>
+
+    <div class="fixed-area" v-if="isVisibleCart">
+        <div class="basket-card">
+            <div class="basket-card__header">
+                <h1 class="basket-card__header__title">basket card</h1>
+                <div class="basket-card__header__delete-icon" @click="setVisibleCard"></div>
+            </div>
+            <div class="basket-card__content">
+                content
+            </div>
+        </div>
+    </div>
+    <div>{{ calculatePrice }}</div>
+</div>
+    <script src="https://cdn.jsdeLivr.net/npm/vue@2.6.14"></script>
     <script src="../lesson_1/js/script.js"></script>
+    <!-- <script src="../lesson_1/js/index.js"></script> -->
 </body>
 
 </html>
