@@ -22,10 +22,10 @@
                 <div class="nav__search">
                     <div>
                         <input type="text" class="goods-search" v-model="search"/>
-                        <button class="search-button" type="button" v-on:click="filterItems">Искать</button>
+                        <custom-button v-on:click="filterItems">Искать</custom-button>
                     </div>
                     <div>
-                        <button class="cart-button" type="button" @click="setVisibleCard">Корзина</button>
+                        <custom-button v-on:click="setVisionCard">Корзина</custom-button>
                     </div>
                 </div>
             </nav>
@@ -34,16 +34,14 @@
     <main>
         <div class="container">
             <div class="goods-list">
-                <div class="goods-item" v-for="item in filteredItems">
-                    <h3>{{ item.product_name }}</h3>
-                    <p>{{ item.price }}</p>
-                </div>
+                <goods-item v-for="item in filteredItems" v-bind:item="item"></goods-item>
             </div>
         </div>
-        <div class="filtered__items" v-if="!filteredItems.length">Нет данных</div>
     </main>
 
-    <div class="fixed-area" v-if="isVisibleCart">
+    <basket-goods v-if="cardIsVision" v-on:closeclick="setVisionCard"></basket-goods>
+
+    <!-- <div class="fixed-area" v-if="isVisibleCart">
         <div class="basket-card">
             <div class="basket-card__header">
                 <h1 class="basket-card__header__title">basket card</h1>
@@ -53,7 +51,7 @@
                 content
             </div>
         </div>
-    </div>
+    </div> -->
     <div>{{ calculatePrice }}</div>
 </div>
     <script src="https://cdn.jsdeLivr.net/npm/vue@2.6.14"></script>
