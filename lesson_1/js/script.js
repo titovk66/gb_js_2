@@ -1,9 +1,3 @@
-// const goods = [
-//     { title: 'Shirt', price: 150 },
-//     { title: 'Socks', price: 50 },
-//     { title: 'Jacket', price: 350 },
-//     { title: 'Shoes', price: 250 },
-// ];
 const BASE_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/';
 const GET_GOODS_ITEMS = `${BASE_URL}catalogData.json`
 const GET_BASKET_GOODS_ITEMS = `${BASE_URL}getBasket.json`

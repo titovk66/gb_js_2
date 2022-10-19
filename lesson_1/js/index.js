@@ -15,8 +15,8 @@ for (var i = 0; i <= 10; i++) {
 var firstName = "Elena"
 const obj = {
    firstName: 'John',
-   sayFirstName: () => {
-      console.log(obj.firstName)
+   sayFirstName() {
+      console.log(this.firstName)
    }
 }
 obj.sayFirstName();
